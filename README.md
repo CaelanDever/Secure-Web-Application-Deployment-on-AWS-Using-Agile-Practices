@@ -7,78 +7,133 @@ This project outlines the step-by-step process of deploying a secure web applica
 # Step-by-Step Implementation
 
 # 1. Set Up Zscaler VPN
+
 1.1 Sign up for Zscaler VPN
+
 Visit Zscaler Website: Go to Zscaler and sign up for a suitable plan.
+
 Receive Credentials: You will receive login credentials (username and password) for the Zscaler portal.
+
 1.2 Install and Configure Zscaler Client
+
 Download the Zscaler Client:
 
 Log in to the Zscaler portal.
+
 Navigate to the Client Connector section (formerly Z App) and download the appropriate installer for your OS (Windows, macOS, or Linux).
+
 Install the Client:
 
 Run the installer on your local machine.
+
 Follow the on-screen prompts to complete the installation.
+
 Configure Zscaler:
 
 Open the Zscaler Client Connector and log in with your credentials.
+
 Depending on your organization’s settings or your specific configuration, you may need to specify the IP ranges you want to tunnel through the Zscaler VPN (e.g., the CIDR blocks for your AWS VPC).
+
 1.3 Test the VPN Connection
+
 Connect to Zscaler:
 
 Click Connect in the client.
+
 Wait until the status shows you are protected or connected.
+
 Verify Connectivity:
 
 Attempt to ping or SSH into an EC2 instance (once launched) within your AWS VPC to confirm you have a secure path.
+
 Tip: If you run into connectivity issues, ensure your local firewall or antivirus software is not blocking VPN connections, and confirm your VPC CIDR configuration is correct.
 
 # 2. Build VPC and EC2 Instances
+
 2.1 Create a VPC
+
 Access the AWS Console: Log in to the AWS Management Console.
+
 Navigate to VPC Service: Go to Services > VPC.
+
 Create VPC:
+
 Click Your VPCs > Create VPC.
+
 Name Tag: MyProjectVPC (or any descriptive name).
+
 IPv4 CIDR Block: 10.0.0.0/16 (example).
+
 Tenancy: Default.
+
 Click Create VPC.
+
 2.2 Create and Configure Subnets
+
 Create Public Subnet:
 
+
 Navigate to Subnets > Create Subnet.
+
 Select your new VPC (MyProjectVPC).
+
 Subnet name: MyPublicSubnet.
+
 CIDR block: 10.0.1.0/24 (example).
+
 Click Create Subnet.
+
 Create Private Subnet:
 
 Repeat the above step with:
+
 Subnet name: MyPrivateSubnet.
+
 CIDR block: 10.0.2.0/24.
+
 Create an Internet Gateway (Required for public access):
 
 Go to Internet Gateways > Create internet gateway.
+
 Name it (e.g., MyIGW) and click Create internet gateway.
+
 Select the newly created IGW and click Actions > Attach to VPC.
+
 Attach it to MyProjectVPC.
+
 Update Route Tables:
 
 Navigate to Route Tables, find the route table associated with your Public Subnet.
+
 Add a route:
+
 Destination: 0.0.0.0/0.
+
 Target: Your newly created Internet Gateway (MyIGW).
+
 This ensures internet-bound traffic from the public subnet is routed to the Internet Gateway.
-(Optional) For the private subnet, you could create a NAT Gateway if you want to allow outbound internet access from the private subnet. This is typically recommended, but not mandatory if you only need intranet connectivity.
+
+(Optional) For the private subnet, you could create a NAT Gateway if you want to allow outbound internet access from the private subnet. This is typically recommended, but 
+not mandatory if you only need intranet connectivity.
+
 2.3 Launch EC2 Instances
+
 2.3.1 Public EC2 Instance
+
 Navigate to EC2: Go to Services > EC2.
+
 Launch Instance:
+
 Click Launch instances.
+
 Choose an AMI (e.g., Amazon Linux 2).
+
 Choose an instance type (e.g., t2.micro).
+
 Configure Instance Details:
+
 Network: Select MyProjectVPC.
+
 Subnet: Select MyPublicSubnet.
 Auto-assign Public IP: Enable (to ensure the instance gets a public IP).
 Add Storage: Accept defaults or configure as needed.
@@ -405,7 +460,7 @@ Permissions: Ensure the CodeDeploy service role and the IAM role on the EC2 inst
 Create pipeline and watch it run. On subsequent code pushes, CodePipeline will automatically detect changes, trigger a new build, and deploy your updated files.
 
 
-10. (Optional) Further Hardening and Monitoring
+# 10. (Optional) Further Hardening and Monitoring
 AWS WAF: Add a Web Application Firewall for additional security on your ALB.
 CloudWatch Logs and Metrics: Monitor your instance logs and set alarms for CPU usage, memory, etc.
 Amazon GuardDuty: Intelligent threat detection to protect your AWS accounts and workloads.
