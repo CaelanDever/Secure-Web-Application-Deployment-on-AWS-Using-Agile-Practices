@@ -1,8 +1,8 @@
-# Secure Web Application Deployment on AWS with Zscaler VPN, VPC, EC2, Route 53, and CI/CD Pipeline
+# Secure Web Application Deployment on AWS with OpenVPN, VPC, EC2, Route 53, and CI/CD Pipeline
 
 # Introduction
 
-This project outlines the step-by-step process of deploying a secure web application on AWS. The setup includes configuring a Zscaler VPN for secure access, building a VPC with public and private subnets, launching EC2 instances, setting up Route 53 for DNS management, creating an AWS Transit Gateway for network connectivity, deploying a dummy application, and automating the deployment process using AWS CodePipeline. The goal is to create a scalable, secure, and automated environment for hosting a web application.
+This project outlines the step-by-step process of deploying a secure web application on AWS. The setup includes configuring OpenVPN for secure access, building a VPC with public and private subnets, launching EC2 instances, setting up Route 53 for DNS management, creating an AWS Transit Gateway for network connectivity, deploying a dummy application, and automating the deployment process using AWS CodePipeline. The goal is to create a scalable, secure, and automated environment for hosting a web application.
 
 # Step-by-Step Implementation
 
