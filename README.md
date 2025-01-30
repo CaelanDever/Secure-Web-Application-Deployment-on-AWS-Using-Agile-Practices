@@ -52,7 +52,6 @@ Select the installer for your operating system
 
 Windows: .exe installer
 
-macOS: .dmg installer
 
 Linux: Usually installed from a package manager (e.g., sudo yum install openvpn on Red Hat or sudo apt-get install openvpn on Ubuntu).
 
@@ -67,6 +66,8 @@ Once installed, you’ll typically see an OpenVPN GUI (on Windows) or an OpenVPN
 Obtain configuration files
 
 You’ll need .ovpn configuration files (or similar) from the OpenVPN server that corresponds to your AWS VPC environment.
+
+<img width="710" alt="cds" src="https://github.com/user-attachments/assets/f0987f7a-077f-4cc7-ab79-e06b02822b88" />
 
 If you’re setting up an Access Server in AWS, you can generate client profiles from the server’s web interface.
 
