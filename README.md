@@ -42,6 +42,8 @@ For the Community Edition, you can proceed to download it directly.
 
 Access the Downloads page
 
+<img width="656" alt="nkn" src="https://github.com/user-attachments/assets/52a03fd8-2009-4c0c-964f-6ad0c334b946" />
+
 For Access Server: look for the Client Downloads section or the OpenVPN Connect client.
 
 For Community Edition: you’ll need both server and client packages; they may be available in your operating system’s repository or on the OpenVPN download page.
