@@ -108,37 +108,6 @@ Windows: route print
 
 Look for the VPN gateway’s IP as the next hop to the VPC subnets.
 
-Tips and Best Practices
-
-Security Groups & NACLs
-
-Ensure your AWS VPC Security Groups and Network ACLs allow traffic from the OpenVPN server instance to your internal resources.
-
-TLS Certificates
-
-Properly handle TLS keys and certificates—don’t share them publicly or commit them to source control.
-
-Logging & Monitoring
-
-Enable logs in OpenVPN for troubleshooting (e.g., verb 3 or higher in the server/client config).
-
-Monitor connection attempts and usage.
-
-Automated Start (Optional)
-
-On Linux systems, you may configure systemd or init.d to start OpenVPN automatically at boot:
-
-systemctl enable openvpn@<your-config-name>
-systemctl start openvpn@<your-config-name>
-
-Scaling
-
-For multiple users or high-traffic scenarios, consider setting up an OpenVPN Access Server in AWS to manage many user profiles and ease administration.
-
-Summary
-
-By switching from Zscaler to OpenVPN, you’re leveraging an open-source, flexible VPN solution to secure traffic to your AWS VPC. The key tasks include downloading and installing the OpenVPN client, configuring the connection using the .ovpn files (or Access Server’s profiles), and testing connectivity to ensure everything is working properly.
-
 # 2. Build VPC and EC2 Instances
 
 2.1 Create a VPC
