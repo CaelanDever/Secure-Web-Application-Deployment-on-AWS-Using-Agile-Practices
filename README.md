@@ -52,12 +52,27 @@ Select the installer for your operating system
 
 Windows: .exe installer
 
-
 Linux: Usually installed from a package manager (e.g., sudo yum install openvpn on Red Hat or sudo apt-get install openvpn on Ubuntu).
 
 Run the installer
 
-Follow the on-screen instructions.
+Follow the on-screen instructions:
+
+Enter a Stack name or leave it as is.
+
+Note that the Activation Key is populated.
+
+Select your VPC ID and Public Subnet ID.
+
+Adjust the Instance Name and Instance Type if needed.
+
+Select a Key Pair Name for SSH access.
+
+Check the box to acknowledge that AWS CloudFormation might create IAM resources.
+
+Click Create stack.
+
+CREATE_IN_PROGRESS displays, and you can monitor the progress until CREATE_COMPLETE displays.
 
 Once installed, you’ll typically see an OpenVPN GUI (on Windows) or an OpenVPN client icon (macOS/Linux) in your system tray or Applications folder.
 
